@@ -12,7 +12,7 @@ from utils.audio import load_wav, melspectrogram
 
 def files_to_list(fdir):
     f_list = []
-    with open(os.path.join(fdir, 'metadata.csv'), encoding = 'utf-8') as f:
+    with open(os.path.join(fdir, 'metadata.txt'), encoding = 'utf-8') as f:
         for line in f:
             parts = line.strip().split('|')
             wav_path = os.path.join(fdir, 'wavs', '%s.wav' % parts[0])

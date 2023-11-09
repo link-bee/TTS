@@ -1,0 +1,27 @@
+- English-LJspeech-sameplevoice-weight 다운로드
+다운경로: https://drive.google.com/file/d/1DIzliFh8jeKMxgyHU2EtS6v2N0-2I5XC/view?usp=drive_link
+저장경로: ./sample_voice_ckpt
+(출처: https://github.com/BogiHsu/Tacotron2-PyTorch) 
+------------------------------------------------------------------------------------
+- Korean-KSS-samplevoice-weight 다운로드
+다운경로: https://drive.google.com/file/d/1Ls35oR4r8sOwqzOocss-f9xfT7bp5jlc/view?usp=drive_link
+저장경로: ./sample_voice_ckpt
+(출처: 직접 학슴)
+
+------------------------------------------------------------------------------------
+- HiFi-GAN-English-weight 다운로드
+다운경로: https://drive.google.com/file/d/1DIzliFh8jeKMxgyHU2EtS6v2N0-2I5XC/view?usp=drive_link
+저장경로: ./vocoders/hifigan/
+(출처: https://github.com/ming024/FastSpeech2) 
+
+------------------------------------------------------------------------------------
+- VocGAN-Korean-weight 다운로드
+다운경로: https://drive.google.com/file/d/125H1Ek9hmQUiBDlikL2yrou3y5oxFY-z/view?usp=drive_link
+저장경로: ./vocoders/vocgan/
+(출처: 출처: https://github.com/JH-lee95/Fastspeech2-Korean) 
+
+------------------------------------------------------------------------------------
+- CMU_ARTIC_US_bd (영어/남자/LJ Speech 로 finetuning 학습) 유저 sample voice
+다운경로: https://drive.google.com/file/d/1aC_OK4EcMmuRl_YwDcqY0wnLUWDTUK7e/view?usp=drive_link
+저장경로: ./CMU_ARTIC_US_bdl_output/En/ckpt
+(출처: 직접 학습)

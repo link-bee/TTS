@@ -2,12 +2,12 @@ from utils.util import to_arr
 from tensorboardX import SummaryWriter
 from Korean.audio import inv_melspectrogram
 from utils.plot import plot_alignment_to_numpy, plot_spectrogram_to_numpy
+from utils.hparams import hparams as hps
 
 
 class Tacotron2Logger(SummaryWriter):
-    def __init__(self, logdir, hps):
+    def __init__(self, logdir):
         super(Tacotron2Logger, self).__init__(logdir, flush_secs=5)
-        self.hps = hps
 
     def log_training(self, items, grad_norm, learning_rate, iteration):
         self.add_scalar('loss.mel', items[0], iteration)
@@ -19,7 +19,7 @@ class Tacotron2Logger(SummaryWriter):
         mel_outputs = to_arr(outputs[0][0])
         mel_outputs_postnet = to_arr(outputs[1][0])
         alignments = to_arr(outputs[3][0]).T
-            
+
         # plot alignment, mel and postnet output
         self.add_image(
             'train.align',
@@ -36,14 +36,14 @@ class Tacotron2Logger(SummaryWriter):
 
         wav = inv_melspectrogram(mel_outputs)
         wav_postnet = inv_melspectrogram(mel_outputs_postnet)
-        self.add_audio('train.wav', wav, iteration, self.hps.sample_rate)
-        self.add_audio('train.wav_post', wav_postnet, iteration, self.hps.sample_rate)
+        self.add_audio('train.wav', wav, iteration, hps.sample_rate)
+        self.add_audio('train.wav_post', wav_postnet, iteration, hps.sample_rate)
 
     def sample_infer(self, outputs, iteration):
         mel_outputs = to_arr(outputs[0][0])
         mel_outputs_postnet = to_arr(outputs[1][0])
         alignments = to_arr(outputs[2][0]).T
-            
+
         # plot alignment, mel and postnet output
         self.add_image(
             'infer.align',
@@ -57,9 +57,9 @@ class Tacotron2Logger(SummaryWriter):
             'infer.mel_post',
             plot_spectrogram_to_numpy(mel_outputs_postnet),
             iteration)
-            
+
         # save audio
         wav = inv_melspectrogram(mel_outputs)
         wav_postnet = inv_melspectrogram(mel_outputs_postnet)
-        self.add_audio('infer.wav', wav, iteration, self.hps.sample_rate)
-        self.add_audio('infer.wav_post', wav_postnet, iteration, self.hps.sample_rate)
+        self.add_audio('infer.wav', wav, iteration, hps.sample_rate)
+        self.add_audio('infer.wav_post', wav_postnet, iteration, hps.sample_rate)
